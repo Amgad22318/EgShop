@@ -1,6 +1,6 @@
 # egshop
 
-EgShop
+EgShop is a full e commerce application by using (APIS , Flutter , shared preferences, Dart)
 
 ## Getting Started
 
