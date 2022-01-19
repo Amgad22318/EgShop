@@ -53,11 +53,7 @@ class ShopUpdateProfileErrorState extends ShopStates {
   ShopUpdateProfileErrorState(this.error);
 }
 
-class ShopLoadingSearchState extends ShopStates {}
 
-class ShopSuccessSearchState extends ShopStates {}
-
-class ShopErrorSearchState extends ShopStates {}
 
 
 

@@ -235,20 +235,7 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
-  SearchModel? searchModel;
 
-  void getSearchData({required String searchText}) {
-    emit(ShopLoadingSearchState());
-    DioHelper.postData(url: SEARCH, token: token, data: {'text': searchText})
-        .then((value) {
-      searchModel = SearchModel.fromJson(value.data);
-      printWarning(searchModel!.data!.searchData!.length.toString());
-      emit(ShopSuccessSearchState());
-    }).catchError((error) {
-      emit(ShopErrorSearchState());
-      printWarning(error.toString());
-    });
-  }
 
 
 }

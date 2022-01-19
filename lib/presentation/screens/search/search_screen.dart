@@ -2,6 +2,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:egshop/business_logic/global_cubit/global_cubit.dart';
 import 'package:egshop/business_logic/home_cubit/cubit.dart';
 import 'package:egshop/business_logic/home_cubit/states.dart';
+import 'package:egshop/business_logic/search_cubit/search_cubit.dart';
 import 'package:egshop/presentation/views/build_fav_and_search_product.dart';
 import 'package:egshop/presentation/views/components.dart';
 import 'package:egshop/presentation/widgets/default_form_field.dart';
@@ -12,14 +13,16 @@ class SearchScreen extends StatelessWidget {
   SearchScreen({Key? key}) : super(key: key);
   TextEditingController searchController = TextEditingController();
   GlobalKey<FormState> searchFormKey = GlobalKey<FormState>();
-  late ShopCubit cubit;
+  late SearchCubit cubit;
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ShopCubit, ShopStates>(
+    return BlocProvider(
+  create: (context) => SearchCubit(),
+  child: BlocConsumer<SearchCubit, SearchState>(
       listener: (context, state) {},
       builder: (context, state) {
-        cubit = ShopCubit.get(context);
+        cubit = SearchCubit.get(context);
         return WillPopScope(
           onWillPop: () async {
             cubit.searchModel = null;
@@ -92,6 +95,7 @@ class SearchScreen extends StatelessWidget {
           ),
         );
       },
-    );
+    ),
+);
   }
 }
